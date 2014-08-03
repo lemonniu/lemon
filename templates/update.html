@@ -1,0 +1,15 @@
+<meta charset="utf-8">
+<script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+<script>
+	tinymce.init({selector:'textarea'});
+</script>
+<form action = "/update_blog/{{b.id}}" method ="POST" class="form-horizontal" role="form"> 
+<!--指明表单提交到哪里去-->
+<!--下面这个语句views.py里面对应的context_instance=RequestContext(request)-->
+{%csrf_token%}
+<!--把老的值取出来放在网页上-->
+<input name  = "title" value = "{{b.title}}" type="text" class="form-control" placeholder="Comment Input">
+<textarea name="content" class="form-control" rows="10" align="left">{{b.content}}</textarea>
+<button type="submit" class="btn btn-default">Submit</button>
+<!--<input name = "submit" value ="提交" type = "submit" >-->
+</form>

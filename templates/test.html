@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+<body>
+
+	my name is {{name}}
+{%if a < 4%}
+	<div>4</div>
+{%endif%}
+
+{%if a > 4%}
+	<div>{{a}}</div>
+{%endif%}
+
+{%for b1 in b%}
+	{%if b1 < a%}
+		{{b1}}</p>
+	{%endif%}
+{%endfor%}
+
+<!--{%verbatim%}
+{{abcedef}}
+{%endverbatim%}
+-->
+</body>
+</html>

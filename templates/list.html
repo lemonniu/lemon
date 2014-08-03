@@ -1,0 +1,77 @@
+<meta charset="utf-8">
+<script src="http://uliweb.cpython.org/static/jquery/jquery-1.7.2.min.js?ver=2"></script>
+ <link rel="stylesheet" href="http://daneden.github.io/animate.css/animate.min.css" />
+
+<!--导入bootcss库 美化页面显示-->
+
+ <!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+
+<script>
+$(document).ready(function(){
+
+        $("a").mouseover(function(){
+                var x = "swing";
+                $(this).addClass(x + ' animated').one('webkitAnimationEnd', function(){
+                        $(this).removeClass(x + ' animated');
+                });
+        });
+
+        $("div").mouseover(function(){
+                var x = "swing";
+                $(this).addClass(x + ' animated').one('webkitAnimationEnd', function(){
+                        $(this).removeClass(x + ' animated');
+                });
+        });
+
+});
+</script>
+
+
+{%for b in all%}
+	<!--{{b.title}}|{{b.id}}|{{b.content}}<br>
+        |{{b.create_date|timesince}}-->
+
+        <form class="form-horizontal" role="form">
+        <div class="form-group">
+        <label class="col-sm-2 control-label" align="right">标题</label>
+        <div class="col-sm-10">
+        <label for="inputPassword" class="col-sm-2 control-label" align = "right">{{b.title}}</label>
+        </div>
+        </div>
+        
+        
+        <div class="form-group">
+        <label class="col-sm-2 control-label" align = "right">评论</label>
+        <div class="col-sm-10">
+        <label for="inputPassword" class="col-sm-2 control-label" align = "right">{{b.content|safe}}</label>
+        <!--html为了防止格式化字符影响用户破坏系统的html，所以在输入文本后加入了safe-->
+        </div>
+        </div>
+
+        <div class="form-group">
+        <label class="col-sm-2 control-label" align = "right">评论时间</label>
+        <div class="col-sm-10">
+        <label for="inputPassword" class="col-sm-2 control-label" align = "right">{{b.create_date}}</label>
+        </div>
+        </div>
+
+
+        <a class="btn btn-primary" href="/blog_update/{{b.id}}" align="middle">修改</a>
+        <a class="btn btn-success" href="/delete/{{b.id}}" align = "middle">删除</a>
+        </p>
+</form>
+	
+	
+{%endfor%}
